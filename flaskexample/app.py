@@ -6,6 +6,9 @@ from flaskexample.models import db
 
 def create_app(config=None):
     app = Flask(__name__)
+    if config is not None:
+        app.config.from_pyfile(config)
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
     app.register_blueprint(main)
     return app

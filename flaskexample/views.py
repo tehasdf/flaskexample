@@ -1,7 +1,10 @@
 from flask import Blueprint, render_template
 
+from flaskexample.models import Product
+
 main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    return render_template("index.html")
+    products = Product.query.all()
+    return render_template("index.html", products=products)

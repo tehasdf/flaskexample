@@ -4,4 +4,11 @@
 
 {% block content %}
 <div>This is the content of the index page</div>
+<div>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }}</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock content %}
