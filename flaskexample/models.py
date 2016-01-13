@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 
+from generic.models import GenericProduct
+
 db = SQLAlchemy()
 
 
@@ -16,3 +18,6 @@ class Product(db.Model):
     name = db.Column(db.String(length=1000))
     description = db.Column(db.String(length=10000))
     price = db.Column(db.Numeric())
+
+    generic_counterpart_id = db.Column(db.Integer(), db.ForeignKey(GenericProduct.product_id))
+    generic_counterpart = db.relationship(GenericProduct, uselist=False)

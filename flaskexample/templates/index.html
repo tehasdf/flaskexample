@@ -7,7 +7,7 @@
 <div>
     <ul>
         {% for product in products %}
-            <li>{{ product.name }}</li>
+            <li>{{ product.name }} (or {{ product.generic_counterpart.name }})</li>
         {% endfor %}
     </ul>
 </div>

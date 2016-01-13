@@ -7,6 +7,8 @@ from flask.cli import script_info_option, FlaskGroup, with_appcontext
 from flaskexample.app import create_app
 from flaskexample.models import db, Product
 
+from generic.models import db as generic_db
+
 
 def prepare_app(info):
     config = info.data.get('config')
@@ -26,7 +28,7 @@ def cli(**params):
 @with_appcontext
 def createdb():
     db.create_all()
-
+    generic_db.create_all()
 
 @cli.command('product')
 @with_appcontext
