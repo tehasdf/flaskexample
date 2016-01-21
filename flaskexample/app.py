@@ -5,6 +5,7 @@ from flaskexample.models import db, publisher
 
 from generic.models import db as generic_db
 from generic2 import thing_views
+from myext import setup_simple
 
 
 def create_app(config=None, **kw):
@@ -18,6 +19,7 @@ def create_app(config=None, **kw):
     db.init_app(app)
     generic_db.init_app(app)
     publisher.init_app(app)
+    setup_simple(app)
 
     app.register_blueprint(main)
     app.register_blueprint(thing_views, url_prefix='/things')

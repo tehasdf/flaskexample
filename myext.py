@@ -1,9 +1,8 @@
 import json
 import redis
 
-
+from werkzeug.local import LocalProxy
 from flask import current_app
-
 
 
 class MyRedis(object):
@@ -24,3 +23,14 @@ class MyRedis(object):
             raise RuntimeError('MyRedis wasnt initialized?')
         conn = current_app.extensions['my_redis']['conn']
         conn.publish(channel, data)
+
+
+
+def setup_simple(app):
+    app.extensions['simple'] = 42
+
+
+def _get_simple():
+    return current_app.extensions['simple']
+
+simple = LocalProxy(_get_simple)

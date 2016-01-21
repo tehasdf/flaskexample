@@ -9,6 +9,7 @@ from flask_wtf import Form
 
 from generic.models import GenericProduct
 from flaskexample.models import Product, publisher
+from myext import simple
 
 
 main = Blueprint('main', __name__)
@@ -56,3 +57,9 @@ def bar():
 def publish():
     publisher.publish('channel', {'some': 'data'})
     return ('ok, published', 200, {'Content-Type': 'text/plain'})
+
+
+@main.route('/simple')
+def show_simple():
+    return render_template_string('simple is {{ simple }}', simple=simple)
+
