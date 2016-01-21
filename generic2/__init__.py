@@ -1,0 +1,1 @@
+from generic2.views import thing_views

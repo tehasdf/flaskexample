@@ -4,6 +4,8 @@ from flaskexample.views import main
 from flaskexample.models import db, publisher
 
 from generic.models import db as generic_db
+from generic2 import thing_views
+
 
 def create_app(config=None, **kw):
     app = Flask(__name__)
@@ -18,5 +20,7 @@ def create_app(config=None, **kw):
     publisher.init_app(app)
 
     app.register_blueprint(main)
+    app.register_blueprint(thing_views, url_prefix='/things')
 
+    app.debug = True
     return app
