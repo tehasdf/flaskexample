@@ -32,7 +32,7 @@ def createdb():
 
 @cli.command('product')
 @with_appcontext
-def createdb():
+def create_product():
     name = raw_input('name?')
     new_product = Product(name=name)
     db.session.add(new_product)

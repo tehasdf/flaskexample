@@ -8,7 +8,7 @@ from wtforms.validators import NumberRange
 from flask_wtf import Form
 
 from generic.models import GenericProduct
-from flaskexample.models import Product
+from flaskexample.models import Product, publisher
 
 
 main = Blueprint('main', __name__)
@@ -51,3 +51,8 @@ def bar():
     else:
         abort(400)
 
+
+@main.route('/publish')
+def publish():
+    publisher.publish('channel', {'some': 'data'})
+    return ('ok, published', 200, {'Content-Type': 'text/plain'})

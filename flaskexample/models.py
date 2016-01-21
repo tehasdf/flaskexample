@@ -1,14 +1,14 @@
 from flask_sqlalchemy import SQLAlchemy
 
 from generic.models import GenericProduct
+from myext import MyRedis
 
+publisher = MyRedis()
 db = SQLAlchemy()
-
 
 
 class Category(db.Model):
     category_id = db.Column(db.Integer(), primary_key=True)
-
     name = db.Column(db.String(length=1000))
 
 
@@ -21,3 +21,4 @@ class Product(db.Model):
 
     generic_counterpart_id = db.Column(db.Integer(), db.ForeignKey(GenericProduct.product_id))
     generic_counterpart = db.relationship(GenericProduct, uselist=False)
+
