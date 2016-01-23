@@ -31,3 +31,10 @@ To run the devserver, do:
 
 To run the tests:
 `py.test`
+
+
+TODO
+----
+
+* add the 'using vanilla sqla models with flask-sqla' example
+* add the 'using the same models with multiple binds' example
