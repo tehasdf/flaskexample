@@ -12,6 +12,8 @@ class Category(db.Model):
     name = db.Column(db.String(length=1000))
 
 
+# this model contains a FK to a model from outside the application: GenericProduct
+# is defined in the `generic` module, which is library code
 class Product(db.Model):
     product_id = db.Column(db.Integer(), primary_key=True)
 
